@@ -3,6 +3,7 @@ using System.IO;
 
 class Program {
   public static void Main(string[] args) {
+    Format f  = new Format();
 
     if (File.Exists("config.ucom")) {
       Console.WriteLine("You are prompted to log in!");
@@ -23,12 +24,10 @@ class Program {
 
         StreamReader sr = new StreamReader("config.ucom");
 
-        String user = sr.ReadLine();
-        String pass = sr.ReadLine();
         int j = 1;
-        while (j == 1) {    
-          if (user != null) {
-            if (!user.Contains(Input)) { 
+        while (j == 1) {
+          if (f.User() != null) {
+            if (!f.User().Equals(Input)) { 
               Console.WriteLine("You are prompted to log in!");
               Console.Write("User: ");
               Input = Console.ReadLine();
