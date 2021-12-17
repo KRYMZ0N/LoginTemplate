@@ -9,8 +9,9 @@ class Program {
 
       Console.Write("User: ");
     } else {
-      Console.WriteLine("Please register a Username");
-      Console.Write("User: ");
+      Console.WriteLine("Press Enter!");
+      Console.Write("Login>> ");
+
     }
 
     String Input = Console.ReadLine();
@@ -22,11 +23,12 @@ class Program {
 
         StreamReader sr = new StreamReader("config.ucom");
 
-        String line = sr.ReadLine();
+        String user = sr.ReadLine();
+        String pass = sr.ReadLine();
         int j = 1;
         while (j == 1) {    
-          if (line != null) {
-            if (!line.Contains(Input)) { 
+          if (user != null) {
+            if (!user.Contains(Input)) { 
               Console.WriteLine("You are prompted to log in!");
               Console.Write("User: ");
               Input = Console.ReadLine();
@@ -42,9 +44,15 @@ class Program {
 
       Console.Write("User: ");
       Input = Console.ReadLine();
-      using (StreamWriter sw = new StreamWriter("config.ucom"))
+      using (StreamWriter sw = new StreamWriter("config.ucom", append: true))
         {
           sw.WriteLine("User: " + Input);
+
+          Console.Write("Pass: ");
+
+          Input = Console.ReadLine();
+          
+          sw.WriteLine("Pass: " + Input);
           i = 0;
         }
       }
