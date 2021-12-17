@@ -2,13 +2,16 @@ using System;
 using System.IO;
 
 public class Format {
-
-  
-  StreamReader sr = new StreamReader("config.ucom");
-  string user = ReadSpecificLine("config.ucom", 1);
+  private string user = ReadSpecificLine("config.ucom", 1);
+  private string pass = ReadSpecificLine("config.ucom", 2);
 
   public string User() { // scrapping the user in the string
     String i = user.Replace("User: ", "");
+    return i;
+  }
+
+  public string Pass() { // scrapping the pass in the string
+    String i = pass.Replace("Pass: ", "");
     return i;
   }
 
